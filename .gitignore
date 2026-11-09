@@ -1,0 +1,9 @@
+dist
+node_modules
+.n8n
+*.tsbuildinfo
+agent-tools
+coverage
+*.tgz
+.env
+.env.*

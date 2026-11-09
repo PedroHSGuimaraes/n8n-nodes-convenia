@@ -1,0 +1,30 @@
+{
+  "name": "Convenia — webhook de admissão iniciada",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "events": ["admission.started"]
+      },
+      "id": "88888888-8888-4888-8888-888888888888",
+      "name": "Admissão iniciada",
+      "type": "n8n-nodes-convenia.conveniaTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "webhookId": "convenia-admissao",
+      "credentials": {
+        "conveniaWebhookApi": {
+          "id": "convenia-webhook-local",
+          "name": "Convenia Webhook API"
+        }
+      }
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

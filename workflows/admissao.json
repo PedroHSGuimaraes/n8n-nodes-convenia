@@ -1,0 +1,55 @@
+{
+  "name": "Convenia — iniciar admissão",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "11111111-1111-4111-8111-111111111111",
+      "name": "Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "resource": "employee",
+        "operation": "startAdmission",
+        "name": "={{$json.nome}}",
+        "lastName": "={{$json.sobrenome}}",
+        "relationshipId": 1,
+        "department": "={{$json.departamento}}",
+        "hiringDate": "={{$json.contratacao}}"
+      },
+      "id": "22222222-2222-4222-8222-222222222222",
+      "name": "Iniciar admissão",
+      "type": "n8n-nodes-convenia.convenia",
+      "typeVersion": 1,
+      "position": [280, 0],
+      "credentials": {
+        "conveniaApi": {
+          "id": "convenia-local",
+          "name": "Convenia API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual": {
+      "main": [
+        [
+          {
+            "node": "Iniciar admissão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

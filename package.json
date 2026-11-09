@@ -1,0 +1,65 @@
+{
+	"name": "n8n-nodes-convenia",
+	"version": "0.1.0",
+	"description": "n8n community node for the Convenia public API v3: employees, admission, dismissal, vacation, benefits, organization, payroll, and webhooks. Usable as an AI Agent tool.",
+	"license": "MIT",
+	"homepage": "https://github.com/PedroHSGuimaraes/n8n-nodes-convenia",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PedroHSGuimaraes/n8n-nodes-convenia.git"
+	},
+	"bugs": {
+		"url": "https://github.com/PedroHSGuimaraes/n8n-nodes-convenia/issues"
+	},
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"convenia",
+		"rh",
+		"hr",
+		"folha",
+		"ferias"
+	],
+	"author": {
+		"name": "Pedro Henrique Santos Guimarães",
+		"email": "pedro.guimaraes02@hotmail.com"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "node scripts/lint-ordinary.mjs",
+		"lint:fix": "node scripts/lint-ordinary.mjs --fix",
+		"test": "n8n-node build && node --test test/*.test.cjs",
+		"typecheck": "tsc --noEmit --pretty false",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": ["dist", "docs", "workflows", "CHANGELOG.md", "SECURITY.md", "LICENSE.md"],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/ConveniaApi.credentials.js",
+			"dist/credentials/ConveniaWebhookApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Convenia/Convenia.node.js",
+			"dist/nodes/ConveniaTrigger/ConveniaTrigger.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.55.5",
+		"eslint": "9.32.0",
+		"n8n-workflow": "2.47.0",
+		"prettier": "3.6.2",
+		"release-it": "^21.1.0",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	},
+	"engines": {
+		"node": ">=24.0.0"
+	}
+}

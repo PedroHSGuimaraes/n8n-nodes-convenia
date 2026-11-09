@@ -1,0 +1,70 @@
+{
+  "name": "Convenia — ferramenta de leitura para AI Agent",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "content": "Ligue um modelo de chat seu à entrada de modelo do Agente. Este exemplo não traz chave. A ferramenta Convenia está em modo leitura: obter colaborador. Escritas de RH pedem confirmação humana fora do agente.",
+        "height": 160,
+        "width": 420
+      },
+      "id": "55555555-5555-4555-8555-555555555555",
+      "name": "Nota",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, -200]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{$json.pedido}}"
+      },
+      "id": "66666666-6666-4666-8666-666666666666",
+      "name": "Agente",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [280, 0]
+    },
+    {
+      "parameters": {
+        "resource": "employee",
+        "operation": "get",
+        "employeeId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $fromAI('colaboradorId', 'UUID do colaborador informado pelo usuário') }}"
+        }
+      },
+      "id": "77777777-7777-4777-8777-777777777777",
+      "name": "Consultar colaborador",
+      "type": "n8n-nodes-convenia.convenia",
+      "typeVersion": 1,
+      "position": [520, 200],
+      "credentials": {
+        "conveniaApi": {
+          "id": "convenia-local",
+          "name": "Convenia API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Consultar colaborador": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}
